@@ -44,7 +44,7 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 Log.d("<"+airport.getOaci()+">", airport.getName());
-
+                lstAirport.remove(airport);
             }
         });
         button.setEnabled(true);

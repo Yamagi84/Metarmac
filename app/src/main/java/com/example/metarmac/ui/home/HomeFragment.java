@@ -3,7 +3,9 @@ package com.example.metarmac.ui.home;
 import static com.example.metarmac.XMLReader.convertStringToXMLDocument;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +66,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Context context = getContext();
+
         tv_oaci = (EditText) getView().findViewById(R.id.tv_oaci);
         btn_confirm_oaci = (Button) getView().findViewById(R.id.btn_confirm_oaci);
 
@@ -82,9 +86,17 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 OkHttpClient client = new OkHttpClient();
 
+                /*
                 Request request = new Request.Builder()
                         .url("https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&stationString=" + tv_oaci.getText().toString() + "&hoursBeforeNow=4&mostRecent=true")
                         .build();
+                 */
+                Request request = new Request.Builder()
+                        .url("https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=stations&requestType=retrieve&format=xml&stationString=" + tv_oaci.getText().toString())
+                        .build();
+
+
+
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -93,7 +105,7 @@ public class HomeFragment extends Fragment {
                     }
 
                     @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException { //VERIFICATION DU NOMBRE DE RESULTATS > 0 SINON AFFICHER ERREUR AU LIEU DE CRASH L'APP
                         if (!response.isSuccessful()) {
                             throw new IOException("Unexpected code " + response);
                         }
@@ -103,13 +115,30 @@ public class HomeFragment extends Fragment {
 
                         Document doc = convertStringToXMLDocument(responseData);
 
+                        /*
                         String metar = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
                         Log.d("<Debug>", metar);
                         String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(3).getTextContent();
 
                         lstAirport.add(new Airport(metar, oaci));
+                         */
 
-                        hideKeyboard(getParentFragment().getActivity());
+                        String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
+                        Log.d("test", oaci);
+                        String name = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(9).getTextContent();
+                        Log.d("test", oaci);
+
+                        lstAirport.add(new Airport(name, oaci));
+
+                        Handler mainHandler = new Handler(context.getMainLooper());
+
+                        Runnable myRunnable = new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.notifyDataSetChanged();
+                            }
+                        };
+                        mainHandler.post(myRunnable);
                     }
                 });
             }
