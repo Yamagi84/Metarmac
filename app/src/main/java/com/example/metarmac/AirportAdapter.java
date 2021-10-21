@@ -1,6 +1,7 @@
 package com.example.metarmac;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,13 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
         textView.setText(airport.getName());
         Button button = holder.btn_delete;
         button.setText("Delete");
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("<"+airport.getOaci()+">", airport.getName());
+
+            }
+        });
         button.setEnabled(true);
     }
 

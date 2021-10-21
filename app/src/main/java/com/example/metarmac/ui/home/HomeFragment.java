@@ -2,15 +2,18 @@ package com.example.metarmac.ui.home;
 
 import static com.example.metarmac.XMLReader.convertStringToXMLDocument;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.metarmac.AirportAdapter;
+import com.example.metarmac.MainActivity;
 import com.example.metarmac.R;
 import com.example.metarmac.databinding.FragmentHomeBinding;
 import com.example.metarmac.model.Airport;
@@ -51,14 +55,6 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
 
         return root;
@@ -107,11 +103,13 @@ public class HomeFragment extends Fragment {
 
                         Document doc = convertStringToXMLDocument(responseData);
 
-                        String test = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
-                        Log.d("<Debug>", test);
+                        String metar = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
+                        Log.d("<Debug>", metar);
+                        String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(3).getTextContent();
 
-                        lstAirport.add(new Airport("test", test));
+                        lstAirport.add(new Airport(metar, oaci));
 
+                        hideKeyboard(getParentFragment().getActivity());
                     }
                 });
             }
@@ -123,5 +121,16 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
