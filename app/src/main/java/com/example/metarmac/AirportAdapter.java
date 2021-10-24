@@ -1,6 +1,7 @@
 package com.example.metarmac;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +18,14 @@ import java.util.List;
 
 public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHolder> {
 
+    private Context parentContext;
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        parentContext = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(parentContext);
 
         View airportView = inflater.inflate(R.layout.item_airport, parent, false);
 
@@ -45,6 +48,16 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
             public void onClick(View view) {
                 Log.d("<"+airport.getOaci()+">", airport.getName());
                 lstAirport.remove(airport);
+
+                Handler mainHandler = new Handler(parentContext.getMainLooper());
+
+                Runnable myRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        notifyDataSetChanged();
+                    }
+                };
+                mainHandler.post(myRunnable);
             }
         });
         button.setEnabled(true);

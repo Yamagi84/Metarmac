@@ -75,6 +75,8 @@ public class HomeFragment extends Fragment {
 
         lstAirport = new ArrayList<>();
 
+        lstAirport.add(new Airport("test1", "test2"));
+
         AirportAdapter adapter = new AirportAdapter(lstAirport);
 
         rvAirport.setAdapter(adapter);
