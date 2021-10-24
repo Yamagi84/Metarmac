@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.metarmac.AirportAdapter;
+import com.example.metarmac.GlobalApplication;
 import com.example.metarmac.MainActivity;
 import com.example.metarmac.R;
 import com.example.metarmac.databinding.FragmentHomeBinding;
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment {
     private EditText tv_oaci;
     private Button btn_confirm_oaci;
 
-    ArrayList<Airport> lstAirport;
+    private ArrayList<Airport> lstAirport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -73,9 +74,7 @@ public class HomeFragment extends Fragment {
 
         RecyclerView rvAirport = (RecyclerView) getView().findViewById(R.id.rv_airport_list);
 
-        lstAirport = new ArrayList<>();
-
-        lstAirport.add(new Airport("test1", "test2"));
+        lstAirport = ((GlobalApplication)getActivity().getApplication()).getLstAirport();
 
         AirportAdapter adapter = new AirportAdapter(lstAirport);
 
