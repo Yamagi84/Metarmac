@@ -143,7 +143,9 @@ public class HomeFragment extends Fragment {
                                 String name = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(9).getTextContent();
                                 Log.d("test", oaci);
 
-                                lstAirport.add(new Airport(name, oaci));
+                                lstAirport.add(new Airport(doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes()));
+
+                                //lstAirport.add(new Airport(name, oaci));
 
                                 Runnable myRunnable = new Runnable() {
                                     @Override

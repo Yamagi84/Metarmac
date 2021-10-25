@@ -3,6 +3,7 @@ package com.example.metarmac.model;
 import static com.example.metarmac.XMLReader.convertStringToXMLDocument;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
@@ -16,6 +17,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class Taf {
+
+    public boolean containData;
 
     public Taf(String oaci) {
 
@@ -44,9 +47,15 @@ public class Taf {
 
                 Log.d("NbResult", doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent());
 
+                if(doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent().equals("0")) {
+                    containData = false;
+                }
+                else {
+                    containData = true;
 
-                String metar = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
-                Log.d("<taf>", metar);
+                    String metar = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
+                    Log.d("<taf>", metar);
+                }
 
             }
         });
