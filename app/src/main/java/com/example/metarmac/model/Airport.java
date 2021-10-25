@@ -5,9 +5,15 @@ public class Airport {
     private String name;
     private String oaci;
 
+    private Metar metar;
+    private Taf taf;
+
     public Airport(String name, String oaci) {
         this.name = name;
         this.oaci = oaci;
+
+        this.metar = new Metar(this.oaci);
+        this.taf = new Taf(this.oaci);
     }
 
 

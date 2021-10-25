@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
@@ -85,63 +86,77 @@ public class HomeFragment extends Fragment {
         btn_confirm_oaci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OkHttpClient client = new OkHttpClient();
 
-                /*
-                Request request = new Request.Builder()
-                        .url("https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&stationString=" + tv_oaci.getText().toString() + "&hoursBeforeNow=4&mostRecent=true")
-                        .build();
-                 */
-                Request request = new Request.Builder()
-                        .url("https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=stations&requestType=retrieve&format=xml&stationString=" + tv_oaci.getText().toString())
-                        .build();
+                Handler mainHandler = new Handler(context.getMainLooper());
 
-
-
-
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException { //VERIFICATION DU NOMBRE DE RESULTATS > 0 SINON AFFICHER ERREUR AU LIEU DE CRASH L'APP
-                        if (!response.isSuccessful()) {
-                            throw new IOException("Unexpected code " + response);
+                if(tv_oaci.getText().toString().isEmpty()) {
+                    Runnable myRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "TextView Vide !",
+                                    Toast.LENGTH_LONG).show();
                         }
-                        final String responseData = response.body().string();
+                    };
+                    mainHandler.post(myRunnable);
+                }
+                else {
 
-                        Log.d("Réponse", responseData);
+                    OkHttpClient client = new OkHttpClient();
 
-                        Document doc = convertStringToXMLDocument(responseData);
+                    Request request = new Request.Builder()
+                            .url("https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=stations&requestType=retrieve&format=xml&stationString=" + tv_oaci.getText().toString())
+                            .build();
 
-                        /*
-                        String metar = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
-                        Log.d("<Debug>", metar);
-                        String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(3).getTextContent();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            e.printStackTrace();
+                        }
 
-                        lstAirport.add(new Airport(metar, oaci));
-                         */
-
-                        String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
-                        Log.d("test", oaci);
-                        String name = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(9).getTextContent();
-                        Log.d("test", oaci);
-
-                        lstAirport.add(new Airport(name, oaci));
-
-                        Handler mainHandler = new Handler(context.getMainLooper());
-
-                        Runnable myRunnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                adapter.notifyDataSetChanged();
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException { //VERIFICATION DU NOMBRE DE RESULTATS > 0 SINON AFFICHER ERREUR AU LIEU DE CRASH L'APP
+                            if (!response.isSuccessful()) {
+                                throw new IOException("Unexpected code " + response);
                             }
-                        };
-                        mainHandler.post(myRunnable);
-                    }
-                });
+                            final String responseData = response.body().string();
+
+                            Log.d("Réponse Airport", responseData);
+
+                            Document doc = convertStringToXMLDocument(responseData);
+
+                            Log.d("NbResult", doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent());
+
+                            if(doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent().equals("0")) {
+                                Runnable myRunnable = new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getActivity(), "Code OACI inconnu !",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                };
+                                mainHandler.post(myRunnable);
+                            }
+                            else {
+
+                                String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
+                                Log.d("test", oaci);
+                                String name = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(9).getTextContent();
+                                Log.d("test", oaci);
+
+                                lstAirport.add(new Airport(name, oaci));
+
+                                Runnable myRunnable = new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                };
+                                mainHandler.post(myRunnable);
+                            }
+                        }
+                    });
+                }
+
             }
         });
 
