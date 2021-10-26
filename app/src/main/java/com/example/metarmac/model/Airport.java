@@ -25,16 +25,28 @@ public class Airport {
     }
 
     public Airport(NodeList data) {
-        this.name = data.item(9).getTextContent(); //Check pour récupérer le bon nom (boucle for pr trouver la bonne balise ?)
-        this.oaci = data.item(1).getTextContent().toUpperCase(Locale.ROOT);
-        this.country = data.item(11).getTextContent();
 
-        this.latitude = Float.parseFloat(data.item(3).getTextContent());
-        this.longitude = Float.parseFloat(data.item(5).getTextContent());
+        this.oaci = data.item(1).getTextContent().toUpperCase(Locale.ROOT);
+
+        for(int i=0; i<data.getLength(); i++) {
+            if(data.item(i).getNodeName().equals("station_id"))
+                this.oaci = data.item(i).getTextContent();  //.toUpperCase(Locale.ROOT)
+
+            else if(data.item(i).getNodeName().equals("site"))
+                this.name = data.item(i).getTextContent();
+
+            else if (data.item(i).getNodeName().equals("country"))
+                this.country = data.item(i).getTextContent();
+
+            else if (data.item(i).getNodeName().equals("latitude"))
+                this.latitude = Float.parseFloat(data.item(i).getTextContent());
+
+            else if (data.item(i).getNodeName().equals("longitude"))
+                this.longitude = Float.parseFloat(data.item(i).getTextContent());
+        }
 
         this.metar = new Metar(this.oaci);
         this.taf = new Taf(this.oaci);
-
 
     }
 
@@ -43,15 +55,27 @@ public class Airport {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getOaci() {
         return oaci;
     }
 
-    public void setOaci(String oaci) {
-        this.oaci = oaci;
+    public String getCountry() {
+        return country;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public Metar getMetar() {
+        return metar;
+    }
+
+    public Taf getTaf() {
+        return taf;
     }
 }

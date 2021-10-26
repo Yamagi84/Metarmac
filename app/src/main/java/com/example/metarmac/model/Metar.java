@@ -20,9 +20,9 @@ import okhttp3.Response;
 
 public class Metar {
 
-    public boolean containData;
+    private boolean containData;
 
-    private String metar;
+    private String raw_text;
     private String observation_time;
     private float latitude;
     private float longitude;
@@ -65,8 +65,8 @@ public class Metar {
 
                     NodeList dataNodeList = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes();
 
-                    metar = dataNodeList.item(1).getTextContent();
-                    Log.d("<metar>", metar);
+                    raw_text = dataNodeList.item(1).getTextContent();
+                    Log.d("<metar>", raw_text);
 
                     observation_time = dataNodeList.item(5).getTextContent();
                     latitude = Float.parseFloat(dataNodeList.item(7).getTextContent());
@@ -78,9 +78,55 @@ public class Metar {
                     visibility_statute_mi = Float.parseFloat(dataNodeList.item(19).getTextContent());
                     altim_in_hg = Float.parseFloat(dataNodeList.item(21).getTextContent());
 
+                    containData = true;
+
                 }
 
             }
         });
+    }
+
+    public boolean isContainData() {
+        return containData;
+    }
+
+    public String getRaw_text() {
+        return raw_text;
+    }
+
+    public String getObservation_time() {
+        return observation_time;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public float getTemp_c() {
+        return temp_c;
+    }
+
+    public float getDewpoint_c() {
+        return dewpoint_c;
+    }
+
+    public int getWind_dir_degrees() {
+        return wind_dir_degrees;
+    }
+
+    public int getWind_speed_kt() {
+        return wind_speed_kt;
+    }
+
+    public float getVisibility_statute_mi() {
+        return visibility_statute_mi;
+    }
+
+    public float getAltim_in_hg() {
+        return altim_in_hg;
     }
 }
