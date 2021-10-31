@@ -26,7 +26,7 @@ public class Airport {
 
     public Airport(NodeList data) {
 
-        this.oaci = data.item(1).getTextContent().toUpperCase(Locale.ROOT);
+        //this.oaci = data.item(1).getTextContent().toUpperCase(Locale.ROOT);
 
         for(int i=0; i<data.getLength(); i++) {
             if(data.item(i).getNodeName().equals("station_id"))

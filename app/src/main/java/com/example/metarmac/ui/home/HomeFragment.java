@@ -60,7 +60,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
         return root;
     }
 
@@ -120,11 +119,11 @@ public class HomeFragment extends Fragment {
                             }
                             final String responseData = response.body().string();
 
-                            Log.d("Réponse Airport", responseData);
+                            //Log.d("Réponse Airport", responseData);
 
                             Document doc = convertStringToXMLDocument(responseData);
 
-                            Log.d("NbResult", doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent());
+                            //Log.d("NbResult", doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent());
 
                             if(doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent().equals("0")) {
                                 Runnable myRunnable = new Runnable() {
@@ -138,14 +137,14 @@ public class HomeFragment extends Fragment {
                             }
                             else {
 
+                                /*
                                 String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
                                 Log.d("test", oaci);
                                 String name = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(9).getTextContent();
                                 Log.d("test", oaci);
+                                */
 
                                 lstAirport.add(new Airport(doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes()));
-
-                                //lstAirport.add(new Airport(name, oaci));
 
                                 Runnable myRunnable = new Runnable() {
                                     @Override

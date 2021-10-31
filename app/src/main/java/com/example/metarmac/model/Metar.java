@@ -54,7 +54,7 @@ public class Metar {
                 }
                 final String responseData = response.body().string();
 
-                Log.d("Réponse METAR", responseData);
+                //Log.d("Réponse METAR", responseData);
 
                 Document doc = convertStringToXMLDocument(responseData);
 
@@ -63,11 +63,44 @@ public class Metar {
                 }
                 else {
 
+                    containData = true;
+
                     NodeList dataNodeList = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes();
 
                     raw_text = dataNodeList.item(1).getTextContent();
-                    Log.d("<metar>", raw_text);
+                    //Log.d("<metar>", raw_text);
 
+                    for(int i=0; i<dataNodeList.getLength(); i++) {
+                        if(dataNodeList.item(i).getNodeName().equals("observation_time"))
+                            observation_time = dataNodeList.item(i).getTextContent();
+
+                        else if(dataNodeList.item(i).getNodeName().equals("latitude"))
+                            latitude = Float.parseFloat(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("longitude"))
+                            longitude = Float.parseFloat(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("temp_c"))
+                            temp_c = Float.parseFloat(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("dewpoint_c"))
+                            dewpoint_c = Float.parseFloat(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("wind_dir_degrees"))
+                            wind_dir_degrees = Integer.parseInt(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("wind_speed_kt"))
+                            wind_speed_kt = Integer.parseInt(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("visibility_statute_mi"))
+                            visibility_statute_mi = Float.parseFloat(dataNodeList.item(i).getTextContent());
+
+                        else if(dataNodeList.item(i).getNodeName().equals("altim_in_hg"))
+                            altim_in_hg = Float.parseFloat(dataNodeList.item(i).getTextContent());
+
+                    }
+
+                    /*
                     observation_time = dataNodeList.item(5).getTextContent();
                     latitude = Float.parseFloat(dataNodeList.item(7).getTextContent());
                     longitude = Float.parseFloat(dataNodeList.item(9).getTextContent());
@@ -77,8 +110,7 @@ public class Metar {
                     wind_speed_kt = Integer.parseInt(dataNodeList.item(17).getTextContent());
                     visibility_statute_mi = Float.parseFloat(dataNodeList.item(19).getTextContent());
                     altim_in_hg = Float.parseFloat(dataNodeList.item(21).getTextContent());
-
-                    containData = true;
+                    */
 
                 }
 
