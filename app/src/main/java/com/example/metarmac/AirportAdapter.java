@@ -20,6 +20,11 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
 
     private Context parentContext;
 
+    private List<Airport> lstAirport;
+
+    public AirportAdapter(List<Airport> lstAirport) {
+        this.lstAirport = lstAirport;
+    }
 
     @NonNull
     @Override
@@ -38,15 +43,15 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
         Airport airport = lstAirport.get(position);
 
         TextView textView = holder.tv_oaci;
-        textView.setText(airport.getOaci());
+        textView.setText(airport.getStation_id());
         textView = holder.tv_name;
-        textView.setText(airport.getName());
+        textView.setText(airport.getSite());
         Button button = holder.btn_delete;
         button.setText("Delete");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("<"+airport.getOaci()+">", airport.getName());
+                //Log.d("<"+airport.getStation_id()+">", airport.getSite());
                 lstAirport.remove(airport);
 
                 Handler mainHandler = new Handler(parentContext.getMainLooper());
@@ -81,11 +86,5 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
             tv_name = (TextView) itemView.findViewById(R.id.airport_name);
             btn_delete = (Button) itemView.findViewById(R.id.delete_button);
         }
-    }
-
-    private List<Airport> lstAirport;
-
-    public AirportAdapter(List<Airport> lstAirport) {
-        this.lstAirport = lstAirport;
     }
 }
