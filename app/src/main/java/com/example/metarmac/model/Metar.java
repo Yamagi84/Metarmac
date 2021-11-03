@@ -90,9 +90,6 @@ public class Metar {
 
                     NodeList dataNodeList = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes();
 
-                    //raw_text = dataNodeList.item(1).getTextContent();
-                    //Log.d("<metar>", raw_text);
-
                     sky_condition = new ArrayList<>();
 
                     for(int i=0; i<dataNodeList.getLength(); i++) {

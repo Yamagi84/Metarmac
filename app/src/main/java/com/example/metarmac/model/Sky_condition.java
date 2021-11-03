@@ -2,7 +2,7 @@ package com.example.metarmac.model;
 
 import org.w3c.dom.NamedNodeMap;
 
-public class Sky_condition {
+public class Sky_condition { // Used in Metar.java and Taf.java
 
     private String sky_cover;
     private int cloud_base_ft_agl;

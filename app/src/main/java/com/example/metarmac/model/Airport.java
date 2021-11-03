@@ -19,19 +19,7 @@ public class Airport {
     private Metar metar;
     private Taf taf;
 
-    /*
-    public Airport(String name, String oaci) {
-        this.site = name;
-        this.station_id = oaci;
-
-        this.metar = new Metar(this.station_id);
-        this.taf = new Taf(this.station_id);
-    }
-    */
-
     public Airport(NodeList data) {
-
-        //this.oaci = data.item(1).getTextContent().toUpperCase(Locale.ROOT);
 
         for(int i=0; i<data.getLength(); i++) {
             if(data.item(i).getNodeName().equals("station_id"))
