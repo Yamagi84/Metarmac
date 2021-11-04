@@ -34,7 +34,7 @@ public class Taf {
     private float longitude;
     private float elevaton_m;
 
-    private ArrayList<Forecast> lstForecast; // A instancier
+    private ArrayList<Forecast> lstForecast;
 
     public Taf(String oaci) {
 

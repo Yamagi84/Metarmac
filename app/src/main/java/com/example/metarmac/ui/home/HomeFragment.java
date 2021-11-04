@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void run() {
                             Toast.makeText(getActivity(), "TextView Vide !",
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         }
                     };
                     mainHandler.post(myRunnable);
@@ -130,7 +130,7 @@ public class HomeFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getActivity(), "Code OACI inconnu !",
-                                                Toast.LENGTH_LONG).show();
+                                                Toast.LENGTH_SHORT).show();
                                     }
                                 };
                                 mainHandler.post(myRunnable);
@@ -156,6 +156,7 @@ public class HomeFragment extends Fragment {
                             }
                         }
                     });
+                    tv_oaci.getText().clear();
                 }
 
             }
