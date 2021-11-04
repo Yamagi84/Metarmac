@@ -15,10 +15,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.metarmac.R;
 import com.example.metarmac.databinding.FragmentDashboardBinding;
 
+import com.mapbox.maps.MapView;
+import com.mapbox.maps.Style;
+
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
+
+    private MapView mapView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,14 +33,23 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        /*
         final TextView textView = binding.textDashboard;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mapView = (MapView) view.findViewById(R.id.mapView);
+        mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS);
     }
 
     @Override

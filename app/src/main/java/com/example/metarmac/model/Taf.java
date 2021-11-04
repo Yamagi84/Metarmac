@@ -51,7 +51,7 @@ public class Taf {
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException { //VERIFICATION DU NOMBRE DE RESULTATS > 0 SINON AFFICHER ERREUR AU LIEU DE CRASH L'APP
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if (!response.isSuccessful()) {
                     throw new IOException("Unexpected code " + response);
                 }
