@@ -12,11 +12,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.metarmac.GlobalApplication;
 import com.example.metarmac.R;
 import com.example.metarmac.databinding.FragmentDashboardBinding;
 
+import com.example.metarmac.model.Airport;
 import com.mapbox.maps.MapView;
+import com.mapbox.maps.MapboxMap;
 import com.mapbox.maps.Style;
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager;
+
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
 
@@ -24,6 +31,8 @@ public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding binding;
 
     private MapView mapView;
+
+    private ArrayList<Airport> lstAirport;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +59,19 @@ public class DashboardFragment extends Fragment {
 
         mapView = (MapView) view.findViewById(R.id.mapView);
         mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS);
+
+        lstAirport = ((GlobalApplication)getActivity().getApplication()).getLstAirport();
+
+        for (Airport airport : lstAirport) {
+
+            //mapView.get
+
+        }
     }
+
+
+
+
 
     @Override
     public void onDestroyView() {
