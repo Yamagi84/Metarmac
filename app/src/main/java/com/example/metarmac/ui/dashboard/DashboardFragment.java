@@ -71,7 +71,10 @@ public class DashboardFragment extends Fragment implements OnMapReadyCallback{
                     for (Airport airport : lstAirport) {
                         map.addMarker(new MarkerOptions()
                                 .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
-                                .title(airport.getSite()));
+                                .title("Site : " + airport.getSite() +
+                                        "\nCountry : " + airport.getCountry() +
+                                        "\nLatitude : " + airport.getLatitude() +
+                                        "\nLongitude : " + airport.getLongitude()));
                         latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());
 
                     }

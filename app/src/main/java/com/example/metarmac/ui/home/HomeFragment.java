@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,8 @@ public class HomeFragment extends Fragment {
         Context context = getContext();
 
         tv_oaci = (EditText) getView().findViewById(R.id.tv_oaci);
+        tv_oaci.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+
         btn_confirm_oaci = (Button) getView().findViewById(R.id.btn_confirm_oaci);
 
         RecyclerView rvAirport = (RecyclerView) getView().findViewById(R.id.rv_airport_list);

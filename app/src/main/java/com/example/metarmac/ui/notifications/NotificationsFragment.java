@@ -30,7 +30,6 @@ public class NotificationsFragment extends Fragment {
 
     private ArrayList<Airport> lstAirport;
     private int airportIterator;
-    private Airport actualAirport;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,7 +43,6 @@ public class NotificationsFragment extends Fragment {
 
         lstAirport = ((GlobalApplication)getActivity().getApplication()).getLstAirport();
         airportIterator = 0;
-        actualAirport = lstAirport.get(airportIterator);
 
         return root;
     }
@@ -53,34 +51,42 @@ public class NotificationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        test.setText("N°" + airportIterator + " : " + lstAirport.get(airportIterator).getSite());
+        if(lstAirport.size() == 0) test.setText("Apadaéropor !");
 
-        view.setOnTouchListener(new OnSwipeTouchListener(getContext()) {    //Go créer une méthode qui va s'occuper de l'affichage en fonction de l'aéroport à afficher au lieu de copiuer le code 2 fois
-            @Override
-            public void onSwipeRight() {
+        else {
 
-                if(airportIterator == 0) airportIterator = lstAirport.size()-1;
-                else airportIterator--;
+            test.setText("N°" + airportIterator + " : " + lstAirport.get(airportIterator).getSite());
 
-                test.setText("N°" + airportIterator + " : " + lstAirport.get(airportIterator).getSite());
+            view.setOnTouchListener(new OnSwipeTouchListener(getContext()) {    //Go créer une méthode qui va s'occuper de l'affichage en fonction de l'aéroport à afficher au lieu de copiuer le code 2 fois
+                @Override
+                public void onSwipeRight() {
 
-            }
+                    if (airportIterator == 0) airportIterator = lstAirport.size() - 1;
+                    else airportIterator--;
 
-            @Override
-            public void onSwipeLeft() {
+                    modifyView(lstAirport.get(airportIterator));
+                }
 
-                if(airportIterator == lstAirport.size()-1) airportIterator = 0;
-                else airportIterator++;
+                @Override
+                public void onSwipeLeft() {
 
-                test.setText("N°" + airportIterator + " : " + lstAirport.get(airportIterator).getSite());
+                    if (airportIterator == lstAirport.size() - 1) airportIterator = 0;
+                    else airportIterator++;
 
-            }
-        });
+                    modifyView(lstAirport.get(airportIterator));
+
+                }
+            });
+        }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void modifyView(Airport airport) {
+        test.setText("N°" + lstAirport.indexOf(airport) + " : " + airport.getSite());
     }
 }
