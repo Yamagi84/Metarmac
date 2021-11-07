@@ -2,4 +2,11 @@
 <resources>
     <string name="add_airport">ajouter l\'aéroport</string>
     <string name="oaci_input">Entrer un code OACI...</string>
+    <string name="no_airport">Aucun aéroport à afficher. Ajoutez-en un sur la page d\'accueil pour avoir ses données METAR/TAF.</string>
+    <string name="airport">Aéroport</string>
+    <string name="country">Pays</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="no_code_err">Code OACI vide</string>
+    <string name="oaci_unknown">Code OACI inconnu</string>
 </resources>

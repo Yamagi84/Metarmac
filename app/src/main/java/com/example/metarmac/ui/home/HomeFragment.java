@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
                     Runnable myRunnable = new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(), "TextView Vide !",
+                            Toast.makeText(getActivity(), getResources().getString(R.string.no_code_err),
                                     Toast.LENGTH_SHORT).show();
                         }
                     };
@@ -132,7 +132,7 @@ public class HomeFragment extends Fragment {
                                 Runnable myRunnable = new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getActivity(), "Code OACI inconnu !",
+                                        Toast.makeText(getActivity(), getResources().getString(R.string.oaci_unknown),
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 };

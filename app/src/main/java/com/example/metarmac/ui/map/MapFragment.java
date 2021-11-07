@@ -61,7 +61,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
         map = mapboxMap;
-        mapboxMap.setStyle(Style.OUTDOORS, new Style.OnStyleLoaded() {
+        mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
             @Override public void onStyleLoaded(@NonNull Style style) {
 
                 if(lstAirport.size() != 0) {
@@ -70,10 +70,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                     for (Airport airport : lstAirport) {
                         map.addMarker(new MarkerOptions()
                                 .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
-                                .title("Site : " + airport.getSite() +
-                                        "\nCountry : " + airport.getCountry() +
-                                        "\nLatitude : " + airport.getLatitude() +
-                                        "\nLongitude : " + airport.getLongitude()));
+                                .title(getResources().getString(R.string.airport) + " : " + airport.getSite() +
+                                        "\n"+ getResources().getString(R.string.country) +" : " + airport.getCountry() +
+                                        "\n"+ getResources().getString(R.string.latitude) + " : " + airport.getLatitude() +
+                                        "\n"+ getResources().getString(R.string.longitude) +" : " + airport.getLongitude()));
                         latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());
 
                     }
