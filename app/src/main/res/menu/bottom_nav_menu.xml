@@ -9,14 +9,14 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_map"
         android:icon="@drawable/ic_explore"
         android:title="@string/title_map" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_infos"
         android:icon="@drawable/ic_flight"
-        android:title="@string/title_flight" />
+        android:title="@string/title_infos" />
 
 
 </menu>

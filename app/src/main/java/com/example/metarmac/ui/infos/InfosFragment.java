@@ -1,4 +1,4 @@
-package com.example.metarmac.ui.notifications;
+package com.example.metarmac.ui.infos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,22 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.metarmac.GlobalApplication;
 import com.example.metarmac.R;
-import com.example.metarmac.databinding.FragmentNotificationsBinding;
+import com.example.metarmac.databinding.FragmentInfosBinding;
 import com.example.metarmac.model.Airport;
 import com.example.metarmac.ui.OnSwipeTouchListener;
 
 import java.util.ArrayList;
 
-public class NotificationsFragment extends Fragment {
+public class InfosFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+    private InfosViewModel infosViewModel;
+    private FragmentInfosBinding binding;
 
     private TextView test;
 
@@ -33,10 +31,10 @@ public class NotificationsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        infosViewModel =
+                new ViewModelProvider(this).get(InfosViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentInfosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         test = (TextView) root.findViewById(R.id.text_test);

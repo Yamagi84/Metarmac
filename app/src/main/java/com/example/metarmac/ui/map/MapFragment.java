@@ -1,4 +1,4 @@
-package com.example.metarmac.ui.dashboard;
+package com.example.metarmac.ui.map;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,9 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.metarmac.GlobalApplication;
 import com.example.metarmac.R;
-import com.example.metarmac.databinding.FragmentDashboardBinding;
+import com.example.metarmac.databinding.FragmentMapBinding;
 import com.example.metarmac.model.Airport;
-import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -27,10 +26,10 @@ import com.mapbox.mapboxsdk.maps.Style;
 
 import java.util.ArrayList;
 
-public class DashboardFragment extends Fragment implements OnMapReadyCallback{
+public class MapFragment extends Fragment implements OnMapReadyCallback{
 
-    private DashboardViewModel dashboardViewModel;
-    private FragmentDashboardBinding binding;
+    private MapViewModel mapViewModel;
+    private FragmentMapBinding binding;
 
     private com.mapbox.mapboxsdk.maps.MapView mapView;
     private MapboxMap map;
@@ -39,9 +38,9 @@ public class DashboardFragment extends Fragment implements OnMapReadyCallback{
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+        mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentMapBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         mapView = (MapView) root.findViewById(R.id.mapViewAirport);
