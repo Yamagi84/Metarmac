@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    >
+    android:background="@drawable/shape"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_marginBottom="20dp">
 
     <TextView
         android:id="@+id/airport_oaci"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        />
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/blue"
+        android:textSize="48sp"
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/airport_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        />
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/blue"
+        android:layout_gravity="center"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textSize="10sp"
-        />
+        android:background="@drawable/ic_delete"
+        android:layout_gravity="center"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 </LinearLayout>

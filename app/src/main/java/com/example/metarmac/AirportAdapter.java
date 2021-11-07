@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,8 +47,7 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
         textView.setText(airport.getStation_id());
         textView = holder.tv_name;
         textView.setText(airport.getSite());
-        Button button = holder.btn_delete;
-        button.setText("Delete");
+        ImageButton button = holder.btn_delete;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,14 +77,14 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.ViewHold
 
         public TextView tv_oaci;
         public TextView tv_name;
-        public Button btn_delete;
+        public ImageButton btn_delete;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             tv_oaci = (TextView) itemView.findViewById(R.id.airport_oaci);
             tv_name = (TextView) itemView.findViewById(R.id.airport_name);
-            btn_delete = (Button) itemView.findViewById(R.id.delete_button);
+            btn_delete = (ImageButton) itemView.findViewById(R.id.delete_button);
         }
     }
 }

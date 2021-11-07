@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">Metarmac</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="mapbox_access_token">pk.eyJ1IjoibmFzcmViIiwiYSI6ImNrdWN0ZzNzeDBmZW8ycXJ2YjN4NXpyeHYifQ.MHSkhhI24J21XEhCn2PG_w</string>
+    <string name="app_name" translatable="false">metarmac</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_map" translatable="false">Map</string>
+    <string name="title_flight" translatable="false">Flight</string>
+    <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoibmFzcmViIiwiYSI6ImNrdWN0ZzNzeDBmZW8ycXJ2YjN4NXpyeHYifQ.MHSkhhI24J21XEhCn2PG_w</string>
+    <string name="add_airport">add airport</string>
+    <string name="oaci_input">Enter OACI code...</string>
 </resources>

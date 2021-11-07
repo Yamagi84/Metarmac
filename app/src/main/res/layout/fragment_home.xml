@@ -4,18 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context=".ui.home.HomeFragment">
 
     <EditText
         android:id="@+id/tv_oaci"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="206dp"
+        android:layout_height="50dp"
         android:layout_marginTop="108dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Code OACI"
+        android:fontFamily="@font/poppins_italic"
+        android:hint="@string/oaci_input"
         android:inputType="textPersonName"
+        android:singleLine="false"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/grey"
+        android:textColorHint="@color/grey"
+        android:textColorLink="@color/white"
+        android:textCursorDrawable="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
@@ -24,7 +33,14 @@
         android:id="@+id/btn_confirm_oaci"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Valider"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_add"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:includeFontPadding="false"
+        android:text="@string/add_airport"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        app:cornerRadius="56px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,5 +58,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_confirm_oaci" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_oaci"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
