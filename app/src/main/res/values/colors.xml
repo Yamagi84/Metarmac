@@ -11,4 +11,5 @@
     <color name="bar">#3D3C7E</color>
     <color name="grey">#666593</color>
     <color name="map_line">#f74c4c</color>
+    <color name="light_grey">#b6b6cb</color>
 </resources>

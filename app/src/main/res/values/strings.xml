@@ -13,4 +13,14 @@
     <string name="latitude">Latitude</string>
     <string name="no_code_err">Empty OACI code</string>
     <string name="oaci_unknown">Unknown OACI code</string>
+    <string name="observation_time">observation time :</string>
+    <string name="temperature">temperature :</string>
+    <string name="latitude_infos">latitude :</string>
+    <string name="longitude_infos">longitude :</string>
+    <string name="dewpoint">dewpoint :</string>
+    <string name="wind_direction">wind direction :</string>
+    <string name="wind_speed">wind speed :</string>
+    <string name="visibility">visibility :</string>
+    <string name="pressure">pressure :</string>
+    <string name="clouds">clouds :</string>
 </resources>

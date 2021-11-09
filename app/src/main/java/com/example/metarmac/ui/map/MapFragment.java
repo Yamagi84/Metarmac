@@ -25,6 +25,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback{
 
@@ -68,10 +69,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                     LatLng[] latLng = new LatLng[lstAirport.size()];
 
                     for (Airport airport : lstAirport) {
+                        Locale l = new Locale("", airport.getCountry());
+                        String country = l.getDisplayCountry();
                         map.addMarker(new MarkerOptions()
                                 .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
                                 .title(getResources().getString(R.string.airport) + " : " + airport.getSite() +
-                                        "\n"+ getResources().getString(R.string.country) +" : " + airport.getCountry() +
+                                        "\n"+ getResources().getString(R.string.country) +" : " + country +
                                         "\n"+ getResources().getString(R.string.latitude) + " : " + airport.getLatitude() +
                                         "\n"+ getResources().getString(R.string.longitude) +" : " + airport.getLongitude()));
                         latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());

@@ -9,4 +9,14 @@
     <string name="latitude">Latitude</string>
     <string name="no_code_err">Code OACI vide</string>
     <string name="oaci_unknown">Code OACI inconnu</string>
+    <string name="observation_time">heure d\'observation :</string>
+    <string name="temperature">température :</string>
+    <string name="latitude_infos">latitude :</string>
+    <string name="longitude_infos">longitude :</string>
+    <string name="dewpoint">point de rosée :</string>
+    <string name="wind_direction">direction du vent :</string>
+    <string name="wind_speed">vitesse du vent :</string>
+    <string name="visibility">visibilité :</string>
+    <string name="pressure">pression :</string>
+    <string name="clouds">nuages :</string>
 </resources>

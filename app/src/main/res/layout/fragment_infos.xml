@@ -4,52 +4,390 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context=".ui.infos.InfosFragment">
 
-    <TextView
-        android:id="@+id/text_test"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/previous_airport"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableRight="@drawable/ic_left"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+
+            <Button
+                android:id="@+id/previous_airport"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/current_airport"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="37sp"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/next_airport"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/current_airport"
-            android:layout_width="wrap_content"
+            android:id="@+id/airport_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
             android:textAlignment="center"
-            android:textAllCaps="true" />
+            android:textAllCaps="false"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/next_airport"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/airport_country"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_right"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/metar_taf_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/metar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_black"
+                    android:includeFontPadding="false"
+                    android:text="METAR"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="37sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/metar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape3"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:includeFontPadding="false"
+                        android:padding="10dp"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp"
+                        tools:text="test" />
+
+                    <LinearLayout
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/observation_time_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/observation_time"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/latitude_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/latitude_infos"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/longitude_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/longitude_infos"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/temperature_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/temperature"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/dewpoint_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/dewpoint"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/wind_direction_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/wind_direction"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/wind_speed_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/wind_speed"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/visibility_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/visibility"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/pressure_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/pressure"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/clouds_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_extra_bold"
+                                android:includeFontPadding="false"
+                                android:text="@string/clouds"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/observation_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/latitude"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/longitude"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/temperature"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/dewpoint"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/wind_direction"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/wind_speed"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/visibility"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/pressure"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/clouds"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:paddingLeft="4dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
