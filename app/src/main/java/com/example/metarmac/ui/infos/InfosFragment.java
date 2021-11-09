@@ -25,8 +25,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class InfosFragment extends Fragment  {
-
+public class InfosFragment extends Fragment {
     private FragmentInfosBinding binding;
 
     private ScrollView data;
@@ -158,8 +157,8 @@ public class InfosFragment extends Fragment  {
         wind_dir.setText(airport.getMetar().getWind_dir_degrees() + "°");
         wind_spd.setText(airport.getMetar().getWind_speed_kt() + " kts");
         visibility.setText(airport.getMetar().getVisibility_statute_mi() + " mi");
-        pressure.setText(airport.getMetar().getAltim_in_hg() + " hg");/*
-        clouds.setText(airport.getMetar().getSky_condition() + "°");*/
+        pressure.setText(airport.getMetar().getAltim_in_hg() + " hg");
+        clouds.setText(airport.getMetar().getSky_condition() + "°");
 
         Locale l = new Locale("", airport.getCountry());
         String country = l.getDisplayCountry();

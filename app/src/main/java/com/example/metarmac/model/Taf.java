@@ -57,8 +57,6 @@ public class Taf {
                 }
                 final String responseData = response.body().string();
 
-                //Log.d("Réponse TAF", responseData);
-
                 Document doc = convertStringToXMLDocument(responseData);
 
                 if(doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent().equals("0")) {

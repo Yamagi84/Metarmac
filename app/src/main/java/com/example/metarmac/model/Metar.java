@@ -37,7 +37,7 @@ public class Metar {
     private float visibility_statute_mi;
     private float altim_in_hg;
     private float sea_level_pressure_mb;
-    private String quality_control_flags;
+    //private String quality_control_flags; => IGNORE
     private String wx_string;
 
     private ArrayList<Sky_condition> sky_condition;
@@ -77,8 +77,6 @@ public class Metar {
                     throw new IOException("Unexpected code " + response);
                 }
                 final String responseData = response.body().string();
-
-                //Log.d("Réponse METAR", responseData);
 
                 Document doc = convertStringToXMLDocument(responseData);
 
@@ -136,7 +134,7 @@ public class Metar {
                         /*
                         else if(dataNodeList.item(i).getNodeName().equals("quality_control_flags"))
                             quality_control_flags = dataNodeList.item(i).getTextContent();
-                        //A CHECK PAR RAPPORT AU SITE
+                        // IGNORE
                         */
 
                         else if(dataNodeList.item(i).getNodeName().equals("wx_string"))
@@ -249,9 +247,7 @@ public class Metar {
         return sea_level_pressure_mb;
     }
 
-    public String getQuality_control_flags() {
-        return quality_control_flags;
-    }
+    //public String getQuality_control_flags() { return quality_control_flags; } => IGNORE
 
     public String getWx_string() {
         return wx_string;

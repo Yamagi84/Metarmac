@@ -23,7 +23,7 @@ public class Airport {
 
         for(int i=0; i<data.getLength(); i++) {
             if(data.item(i).getNodeName().equals("station_id"))
-                this.station_id = data.item(i).getTextContent();  //.toUpperCase(Locale.ROOT)
+                this.station_id = data.item(i).getTextContent();
 
             else if(data.item(i).getNodeName().equals("wmo_id"))
                 this.wmo_id = data.item(i).getTextContent();
