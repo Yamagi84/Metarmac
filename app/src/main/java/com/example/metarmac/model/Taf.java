@@ -321,9 +321,7 @@ class Forecast {
         return sky_condition;
     }
 
-    public ArrayList<Turbulence_condition> getTurbulence_condition() {
-        return turbulence_condition;
-    }
+    public ArrayList<Turbulence_condition> getTurbulence_condition() { return turbulence_condition; }
 
     public ArrayList<Icing_condition> getIcing_condition() {
         return icing_condition;
@@ -333,7 +331,6 @@ class Forecast {
         return temperature;
     }
 }
-
 
 
 class Turbulence_condition {
@@ -355,7 +352,20 @@ class Turbulence_condition {
                 turbulence_max_alt_ft_agl = Integer.parseInt(attributes.item(j).getTextContent());
         }
     }
+
+    public String getTurbulence_intensity() {
+        return turbulence_intensity;
+    }
+
+    public int getTurbulence_min_alt_ft_agl() {
+        return turbulence_min_alt_ft_agl;
+    }
+
+    public int getTurbulence_max_alt_ft_agl() {
+        return turbulence_max_alt_ft_agl;
+    }
 }
+
 
 class Icing_condition {
 
@@ -376,7 +386,20 @@ class Icing_condition {
                 icing_max_alt_ft_agl = Integer.parseInt(attributes.item(j).getTextContent());
         }
     }
+
+    public String getIcing_intensity() {
+        return icing_intensity;
+    }
+
+    public int getIcing_min_alt_ft_agl() {
+        return icing_min_alt_ft_agl;
+    }
+
+    public int getIcing_max_alt_ft_agl() {
+        return icing_max_alt_ft_agl;
+    }
 }
+
 
 class Temperature {
 

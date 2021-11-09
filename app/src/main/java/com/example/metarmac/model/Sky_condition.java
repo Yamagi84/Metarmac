@@ -21,4 +21,16 @@ public class Sky_condition { // Used in Metar.java and Taf.java
                 cloud_type = sky_condition__attributes.item(j).getTextContent();
         }
     }
+
+    public String getSky_cover() {
+        return sky_cover;
+    }
+
+    public int getCloud_base_ft_agl() {
+        return cloud_base_ft_agl;
+    }
+
+    public String getCloud_type() {
+        return cloud_type;
+    }
 }
