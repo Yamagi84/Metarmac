@@ -29,7 +29,6 @@ import java.util.Locale;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback{
 
-    private MapViewModel mapViewModel;
     private FragmentMapBinding binding;
 
     private com.mapbox.mapboxsdk.maps.MapView mapView;
@@ -38,8 +37,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     private ArrayList<Airport> lstAirport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
 
         binding = FragmentMapBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

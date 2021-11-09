@@ -25,9 +25,8 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class InfosFragment extends Fragment {
+public class InfosFragment extends Fragment  {
 
-    private InfosViewModel infosViewModel;
     private FragmentInfosBinding binding;
 
     private ScrollView data;
@@ -56,8 +55,6 @@ public class InfosFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        infosViewModel =
-                new ViewModelProvider(this).get(InfosViewModel.class);
 
         binding = FragmentInfosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

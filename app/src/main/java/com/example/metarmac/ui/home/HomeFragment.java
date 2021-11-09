@@ -47,7 +47,6 @@ import okhttp3.Response;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
     private EditText tv_oaci;
@@ -56,7 +55,6 @@ public class HomeFragment extends Fragment {
     private ArrayList<Airport> lstAirport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -122,11 +120,7 @@ public class HomeFragment extends Fragment {
                             }
                             final String responseData = response.body().string();
 
-                            //Log.d("Réponse Airport", responseData);
-
                             Document doc = convertStringToXMLDocument(responseData);
-
-                            //Log.d("NbResult", doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent());
 
                             if(doc.getChildNodes().item(0).getChildNodes().item(13).getAttributes().item(0).getTextContent().equals("0")) {
                                 Runnable myRunnable = new Runnable() {
@@ -139,13 +133,6 @@ public class HomeFragment extends Fragment {
                                 mainHandler.post(myRunnable);
                             }
                             else {
-
-                                /*
-                                String oaci = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(1).getTextContent();
-                                Log.d("test", oaci);
-                                String name = doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes().item(9).getTextContent();
-                                Log.d("test", oaci);
-                                */
 
                                 lstAirport.add(new Airport(doc.getChildNodes().item(0).getChildNodes().item(13).getChildNodes().item(1).getChildNodes()));
 
@@ -171,16 +158,5 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
