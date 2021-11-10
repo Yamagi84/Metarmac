@@ -183,17 +183,17 @@ public class InfosFragment extends Fragment {
         if (airport.getMetar().getObservation_time() != null) {
             metar_content.setVisibility(View.VISIBLE);
             metar.setBackground(getResources().getDrawable(R.drawable.shape3));
-        metar.setText(airport.getMetar().getRaw_text());
-        obs_time.setText(airport.getMetar().getObservation_time() + "UTC");
-        longitude.setText(Float.toString(airport.getMetar().getLongitude()));
-        latitude.setText(Float.toString(airport.getMetar().getLatitude()));
-        temperature.setText(airport.getMetar().getTemp_c() + " °C");
-        dewpoint.setText(airport.getMetar().getDewpoint_c() + " °C");
-        wind_dir.setText(airport.getMetar().getWind_dir_degrees() + "°");
-        wind_spd.setText(airport.getMetar().getWind_speed_kt() + " kts");
-        visibility.setText(airport.getMetar().getVisibility_statute_mi() + " mi");
-        pressure.setText(airport.getMetar().getAltim_in_hg() + " hg");
-        clouds.setText(airport.getMetar().getSky_condition().get(0).getSky_cover() + getResources().getString(R.string.clouds_at) + airport.getMetar().getSky_condition().get(0).getCloud_base_ft_agl() + " m");
+            metar.setText(airport.getMetar().getRaw_text());
+            obs_time.setText(airport.getMetar().getObservation_time() + "UTC");
+            longitude.setText(Float.toString(airport.getMetar().getLongitude()));
+            latitude.setText(Float.toString(airport.getMetar().getLatitude()));
+            temperature.setText(airport.getMetar().getTemp_c() + " °C");
+            dewpoint.setText(airport.getMetar().getDewpoint_c() + " °C");
+            wind_dir.setText(airport.getMetar().getWind_dir_degrees() + "°");
+            wind_spd.setText(airport.getMetar().getWind_speed_kt() + " kts");
+            visibility.setText(airport.getMetar().getVisibility_statute_mi() + " mi");
+            pressure.setText(airport.getMetar().getAltim_in_hg() + " hg");
+            clouds.setText(airport.getMetar().getSky_condition().get(0).getSky_cover() + " " + getResources().getString(R.string.clouds_at) + " " + airport.getMetar().getSky_condition().get(0).getCloud_base_ft_agl() + " m");
         } else {
             metar_content.setVisibility(View.GONE);
             metar.setBackground(getResources().getDrawable(R.drawable.shape4));

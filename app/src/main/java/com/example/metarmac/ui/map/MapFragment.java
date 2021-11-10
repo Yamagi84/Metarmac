@@ -17,6 +17,7 @@ import com.example.metarmac.GlobalApplication;
 import com.example.metarmac.R;
 import com.example.metarmac.databinding.FragmentMapBinding;
 import com.example.metarmac.model.Airport;
+import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -80,8 +81,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         });
     }
 
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -90,6 +89,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
 
     class StyleLoad implements Style.OnStyleLoaded {
+
+
         @Override public void onStyleLoaded(@NonNull Style style) {
 
             if(lstAirport.size() != 0) {
@@ -118,6 +119,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                                 .target(new LatLng(lstAirport.get(0).getLatitude(), lstAirport.get(0).getLongitude()))
                                 .zoom(5.0)
                                 .build());
+
+                map.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(@NonNull Marker marker) {
+                        map.setCameraPosition(new CameraPosition.Builder()
+                                .target(marker.getPosition())
+                                .zoom(12)
+                                .build());
+                        map.selectMarker(marker);
+                        return true;
+                    }
+                });
             }
         }
     }

@@ -5,14 +5,14 @@
     <string name="title_infos" translatable="false">Infos</string>
     <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoibmFzcmViIiwiYSI6ImNrdWN0ZzNzeDBmZW8ycXJ2YjN4NXpyeHYifQ.MHSkhhI24J21XEhCn2PG_w</string>
     <string name="add_airport">add airport</string>
-    <string name="oaci_input">Enter OACI code...</string>
+    <string name="oaci_input">Enter ICAO code...</string>
     <string name="no_airport">No airport to display. Add one in homepage to get its METAR/TAF data</string>
     <string name="airport">Airport</string>
     <string name="country">Country</string>
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
-    <string name="no_code_err">Empty OACI code</string>
-    <string name="oaci_unknown">Unknown OACI code</string>
+    <string name="no_code_err">Empty ICAO code</string>
+    <string name="oaci_unknown">Unknown ICAO code</string>
     <string name="observation_time">observation time :</string>
     <string name="temperature">temperature :</string>
     <string name="latitude_infos">latitude :</string>
@@ -27,7 +27,7 @@
     <string name="forecast_end">to :</string>
     <string name="forecast_type">type :</string>
     <string name="weather">weather :</string>
-    <string name="clouds_at"> at </string>
+    <string name="clouds_at">at</string>
     <string name="no_taf">No TAF data available for this airport</string>
     <string name="no_metar">No METAR data available for this airport</string>
     <string name="forecast">Forecast n°</string>
