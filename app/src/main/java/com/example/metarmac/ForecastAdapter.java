@@ -62,9 +62,12 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
         textView.setText(forecast.getVisibility_statute_mi() + " mi");
         textView = holder.clouds_taf;
         if(forecast.getSky_condition().size() != 0)
-        textView.setText(forecast.getSky_condition().get(0).getSky_cover() + parentContext.getResources().getString(R.string.clouds_at) + forecast.getSky_condition().get(0).getCloud_base_ft_agl() + "m");
+            textView.setText(forecast.getSky_condition().get(0).getSky_cover() + parentContext.getResources().getString(R.string.clouds_at) + forecast.getSky_condition().get(0).getCloud_base_ft_agl() + "m");
         textView = holder.weather_taf;
-        textView.setText(forecast.getWx_string());
+        if(position != 0)
+            textView.setText(forecast.getWx_string());
+        else
+            textView.setText(parentContext.getResources().getString(R.string.missing_data));
 
 
     }
