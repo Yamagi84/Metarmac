@@ -47,18 +47,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
         style = Style.DARK;
 
-        mode = (ToggleButton) root.findViewById(R.id.mode_map);
-        mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    style = Style.SATELLITE_STREETS;
-                } else {
-                    style = Style.DARK;
-                }
-                map = null;
-            }
-        });
         mapView = (MapView) root.findViewById(R.id.mapViewAirport);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -108,6 +96,50 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                                     .zoom(5.0)
                                     .build());
                 }
+            }
+        });
+
+        mode = (ToggleButton) getView().findViewById(R.id.mode_map);
+        mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    style = Style.SATELLITE_STREETS;
+                } else {
+                    style = Style.DARK;
+                }
+                mapboxMap.setStyle(style, new Style.OnStyleLoaded() {
+                    @Override public void onStyleLoaded(@NonNull Style style) {
+
+                        if(lstAirport.size() != 0) {
+                            LatLng[] latLng = new LatLng[lstAirport.size()];
+
+                            for (Airport airport : lstAirport) {
+                                Locale l = new Locale("", airport.getCountry());
+                                String country = l.getDisplayCountry();
+                                map.addMarker(new MarkerOptions()
+                                        .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
+                                        .title(getResources().getString(R.string.airport) + " : " + airport.getSite() +
+                                                "\n"+ getResources().getString(R.string.country) +" : " + country +
+                                                "\n"+ getResources().getString(R.string.latitude) + " : " + airport.getLatitude() +
+                                                "\n"+ getResources().getString(R.string.longitude) +" : " + airport.getLongitude()));
+                                latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());
+
+                            }
+                            if(latLng.length > 1)
+                                map.addPolyline(new PolylineOptions()
+                                        .add(latLng)
+                                        .color(Color.parseColor("#f74c4c"))
+                                        .width(2));
+
+                            map.setCameraPosition(
+                                    new CameraPosition.Builder()
+                                            .target(new LatLng(lstAirport.get(0).getLatitude(), lstAirport.get(0).getLongitude()))
+                                            .zoom(5.0)
+                                            .build());
+                        }
+                    }
+                });
             }
         });
     }
