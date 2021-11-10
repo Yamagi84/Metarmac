@@ -6,12 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ui.map.MapFragment">
 
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapViewAirport"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.mapbox.mapboxsdk.maps.MapView>
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapViewAirport"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.mapbox.mapboxsdk.maps.MapView>
+
+        <ToggleButton
+            android:id="@+id/mode_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/toggle_button_selector"
+            android:checked="false"
+            android:fontFamily="@font/poppins_black"
+            android:includeFontPadding="false"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@drawable/toggle_button_selector"
+            android:textOff="@string/satellite"
+            android:textOn="@string/plan" />
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
