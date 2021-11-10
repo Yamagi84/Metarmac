@@ -155,7 +155,7 @@ public class InfosFragment extends Fragment {
         binding = null;
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
     private void modifyView(Airport airport) {
         RecyclerView rvForecast = (RecyclerView) getView().findViewById(R.id.forecast_list);
 

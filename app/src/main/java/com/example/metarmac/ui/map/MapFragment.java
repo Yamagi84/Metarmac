@@ -33,9 +33,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
     private FragmentMapBinding binding;
 
-    private com.mapbox.mapboxsdk.maps.MapView mapView;
     private MapboxMap map;
-    private ToggleButton mode;
     private String style;
 
     private ArrayList<Airport> lstAirport;
@@ -47,7 +45,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
         style = Style.DARK;
 
-        mapView = (MapView) root.findViewById(R.id.mapViewAirport);
+        MapView mapView = (MapView) root.findViewById(R.id.mapViewAirport);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
@@ -68,7 +66,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         map = mapboxMap;
         mapboxMap.setStyle(style, new StyleLoad());
 
-        mode = (ToggleButton) getView().findViewById(R.id.mode_map);
+        ToggleButton mode = (ToggleButton) getView().findViewById(R.id.mode_map);
         mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

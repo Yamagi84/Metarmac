@@ -14,15 +14,13 @@ import com.mapbox.mapboxsdk.Mapbox;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.metarmac.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
