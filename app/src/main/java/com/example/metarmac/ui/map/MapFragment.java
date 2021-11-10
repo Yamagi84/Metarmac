@@ -66,38 +66,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
 
         map = mapboxMap;
-        mapboxMap.setStyle(style, new Style.OnStyleLoaded() {
-            @Override public void onStyleLoaded(@NonNull Style style) {
-
-                if(lstAirport.size() != 0) {
-                    LatLng[] latLng = new LatLng[lstAirport.size()];
-
-                    for (Airport airport : lstAirport) {
-                        Locale l = new Locale("", airport.getCountry());
-                        String country = l.getDisplayCountry();
-                        map.addMarker(new MarkerOptions()
-                                .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
-                                .title(getResources().getString(R.string.airport) + " : " + airport.getSite() +
-                                        "\n"+ getResources().getString(R.string.country) +" : " + country +
-                                        "\n"+ getResources().getString(R.string.latitude) + " : " + airport.getLatitude() +
-                                        "\n"+ getResources().getString(R.string.longitude) +" : " + airport.getLongitude()));
-                        latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());
-
-                    }
-                    if(latLng.length > 1)
-                        map.addPolyline(new PolylineOptions()
-                                .add(latLng)
-                                .color(Color.parseColor("#f74c4c"))
-                                .width(2));
-
-                    map.setCameraPosition(
-                            new CameraPosition.Builder()
-                                    .target(new LatLng(lstAirport.get(0).getLatitude(), lstAirport.get(0).getLongitude()))
-                                    .zoom(5.0)
-                                    .build());
-                }
-            }
-        });
+        mapboxMap.setStyle(style, new StyleLoad());
 
         mode = (ToggleButton) getView().findViewById(R.id.mode_map);
         mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -108,38 +77,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                 } else {
                     style = Style.DARK;
                 }
-                mapboxMap.setStyle(style, new Style.OnStyleLoaded() {
-                    @Override public void onStyleLoaded(@NonNull Style style) {
-
-                        if(lstAirport.size() != 0) {
-                            LatLng[] latLng = new LatLng[lstAirport.size()];
-
-                            for (Airport airport : lstAirport) {
-                                Locale l = new Locale("", airport.getCountry());
-                                String country = l.getDisplayCountry();
-                                map.addMarker(new MarkerOptions()
-                                        .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
-                                        .title(getResources().getString(R.string.airport) + " : " + airport.getSite() +
-                                                "\n"+ getResources().getString(R.string.country) +" : " + country +
-                                                "\n"+ getResources().getString(R.string.latitude) + " : " + airport.getLatitude() +
-                                                "\n"+ getResources().getString(R.string.longitude) +" : " + airport.getLongitude()));
-                                latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());
-
-                            }
-                            if(latLng.length > 1)
-                                map.addPolyline(new PolylineOptions()
-                                        .add(latLng)
-                                        .color(Color.parseColor("#f74c4c"))
-                                        .width(2));
-
-                            map.setCameraPosition(
-                                    new CameraPosition.Builder()
-                                            .target(new LatLng(lstAirport.get(0).getLatitude(), lstAirport.get(0).getLongitude()))
-                                            .zoom(5.0)
-                                            .build());
-                        }
-                    }
-                });
+                mapboxMap.setStyle(style, new StyleLoad());
             }
         });
     }
@@ -150,5 +88,39 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+
+    class StyleLoad implements Style.OnStyleLoaded {
+        @Override public void onStyleLoaded(@NonNull Style style) {
+
+            if(lstAirport.size() != 0) {
+                LatLng[] latLng = new LatLng[lstAirport.size()];
+
+                for (Airport airport : lstAirport) {
+                    Locale l = new Locale("", airport.getCountry());
+                    String country = l.getDisplayCountry();
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(airport.getLatitude(), airport.getLongitude()))
+                            .title(getResources().getString(R.string.airport) + " : " + airport.getSite() +
+                                    "\n"+ getResources().getString(R.string.country) +" : " + country +
+                                    "\n"+ getResources().getString(R.string.latitude) + " : " + airport.getLatitude() +
+                                    "\n"+ getResources().getString(R.string.longitude) +" : " + airport.getLongitude()));
+                    latLng[lstAirport.indexOf(airport)] = new LatLng(airport.getLatitude(), airport.getLongitude());
+
+                }
+                if(latLng.length > 1)
+                    map.addPolyline(new PolylineOptions()
+                            .add(latLng)
+                            .color(Color.parseColor("#f74c4c"))
+                            .width(2));
+
+                map.setCameraPosition(
+                        new CameraPosition.Builder()
+                                .target(new LatLng(lstAirport.get(0).getLatitude(), lstAirport.get(0).getLongitude()))
+                                .zoom(5.0)
+                                .build());
+            }
+        }
     }
 }
