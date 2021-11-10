@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/taf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/light_grey"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:includeFontPadding="false"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/blue"
+        android:textSize="18sp"/>
+
+<LinearLayout android:id="@+id/forecast"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/forecast_start_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/forecast_start"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/forecast_end_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/forecast_end"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/forecast_type_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/forecast_type"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/wind_direction_taf_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/wind_direction"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/wind_speed_taf_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/wind_speed"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/visibility_taf_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/visibility"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/clouds_taf_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/clouds"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/weather_taf_title"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:includeFontPadding="false"
+            android:text="@string/weather"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.2"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/forecast_start"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/forecast_end"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/forecast_type"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/wind_direction_taf"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/wind_speed_taf"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/visibility_taf"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/clouds_taf"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/weather_taf"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:paddingLeft="4dp"
+            android:text="@string/missing_data"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</LinearLayout>
+
+</LinearLayout>

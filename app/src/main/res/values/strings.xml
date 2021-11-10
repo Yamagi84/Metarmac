@@ -30,7 +30,6 @@
     <string name="clouds_at"> at </string>
     <string name="no_taf">No TAF data available for this airport</string>
     <string name="no_metar">No METAR data available for this airport</string>
-    <string name="forecast2">Forecast n°2</string>
-    <string name="forecast3">Forecast n°3</string>
+    <string name="forecast">Forecast n°</string>
     <string name="missing_data">no data available</string>
 </resources>

@@ -21,11 +21,13 @@
         <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/drawable/shape3.xml" value="0.3828125" />
         <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/drawable/shape4.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/fragment_infos.xml" value="0.27331887201735355" />
+        <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/fragment_infos.xml" value="0.23043478260869565" />
         <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/fragment_map.xml" value="0.33" />
         <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/item_airport.xml" value="0.33" />
+        <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/layout/item_forecast.xml" value="0.3378623188405797" />
         <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/floox/AndroidStudioProjects/Metarmac6/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22135416666666666" />
       </map>
     </option>
   </component>
