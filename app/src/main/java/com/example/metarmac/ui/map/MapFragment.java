@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +35,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
     private com.mapbox.mapboxsdk.maps.MapView mapView;
     private MapboxMap map;
+    private ToggleButton mode;
+    private String style;
 
     private ArrayList<Airport> lstAirport;
 
@@ -41,6 +45,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         binding = FragmentMapBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        style = Style.DARK;
+
+        mode = (ToggleButton) root.findViewById(R.id.mode_map);
+        mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    style = Style.SATELLITE_STREETS;
+                } else {
+                    style = Style.DARK;
+                }
+                map = null;
+            }
+        });
         mapView = (MapView) root.findViewById(R.id.mapViewAirport);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -58,8 +76,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
+
         map = mapboxMap;
-        mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
+        mapboxMap.setStyle(style, new Style.OnStyleLoaded() {
             @Override public void onStyleLoaded(@NonNull Style style) {
 
                 if(lstAirport.size() != 0) {
