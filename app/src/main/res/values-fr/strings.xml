@@ -19,4 +19,14 @@
     <string name="visibility">visibilité :</string>
     <string name="pressure">pression :</string>
     <string name="clouds">nuages :</string>
+    <string name="forecast_start">prévision de :</string>
+    <string name="forecast_end">jusqu\'à :</string>
+    <string name="forecast_type">type :</string>
+    <string name="weather">météo :</string>
+    <string name="clouds_at">" à "</string>
+    <string name="no_taf">Aucune donnée TAF disponible pour cet aéroport</string>
+    <string name="no_metar">Aucune donnée METAR disponible pour cet aéroport</string>
+    <string name="forecast2">Prévision n°2</string>
+    <string name="forecast3">Prévision n°3</string>
+    <string name="missing_data">pas de donnée disponible</string>
 </resources>
